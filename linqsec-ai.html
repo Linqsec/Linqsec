@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINQSEC AI</title>
+  <meta name="description" content="LINQSEC AI">
+  <meta property="og:title" content="Der intelligente Compliance-Assistent">
+  <meta property="og:description" content="Stellen Sie Ihre Fragen zu Datenschutz, IT-Sicherheit oder Compliance – unsere KI antwortet in Sekunden.">
+  <meta property="og:image" content="logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://socialbusiness.github.io/Linqsec/linqsec-ai.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <button type="button" class="burger" id="burger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo"><img src="logo1.svg" alt="LinqSec Logo" height="70"/></a> 
+    <nav class="navbar" id="navbar">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#preise">Preise</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="linqsec-ai.html">LINQSEC AI</a></li>
+        <li><a href="demo.html">Demo starten</a></li>
+        <li><a href="blog.html">Blog</a></li>
+    </nav>
+    <button type="button" class="mode-toggle" id="modeToggle" aria-label="Dark/Light Mode umschalten">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <!-- Halbmond -->
+        <path
+          d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"
+          fill="#3533cd"
+          stroke="#3533cd"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+  </header>
+  <main>
+    <section class="ai-hero">
+      <h1 class="ai-hero h1">LINQSEC AI</h1>
+       <h2 class="ai-hero h2">Der intelligente Compliance-Assistent</h2>
+        <p class="ai-hero p">Stellen Sie Ihre Fragen zu Datenschutz, IT-Sicherheit oder Compliance, unsere KI antwortet in Sekunden.</p>
+    </section>
+    <section class="ai-chat-section">
+      <div class="ai-chat-container">
+        <div id="ai-chat-history" class="ai-chat-history" aria-live="polite"></div>
+        <form id="ai-chat-form" class="ai-chat-form" autocomplete="off">
+          <input type="text" id="ai-user-input" name="question" placeholder="Ihre Frage..." required aria-label="Frage an LINQSEC AI">
+          <button type="submit" id="ai-send-btn">Senden</button>
+        </form>
+        <div class="ai-chat-hint">Die Antworten von LINQSEC AI ersetzen keine rechtliche Beratung.</div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">Impressum</a>|
+      <a href="#">Datenschutz</a>|
+      <a href="#">Kontakt</a>|
+      <a href="#">AGB</a>
+    </div>
+     <div class="footer-social">
+      <a href="mailto:info@linqsec.de" aria-label="E-Mail"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M2 4h20v16H2z" fill="none" stroke="#fff" stroke-width="2"/><path d="M22 4L12 13 2 4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 10v8M6 6v.01M10 14v-4a2 2 0 1 1 4 0v4m0 0v4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+    </div>
+    <div class="footer-note">© 2025 LinqSec – Alle Rechte vorbehalten</div>
+  </footer>
+  <div class="cookie-banner" id="cookieBanner">
+    <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr
+        erfahren</a></span>
+    <button type="button" id="cookieAccept">Verstanden</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

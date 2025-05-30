@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINQSEC Aktuelles zu Sicherheit, Datenschutz & Compliance</title>
+  <meta name="description" content="Im LinqSec Blog finden IT-Verantwortliche, Datenschutzbeauftragte und Entscheider im DACH-Raum aktuelle Beiträge zu Compliance, Datenschutz und IT-Sicherheit. Bleiben Sie informiert über DSGVO, ISO 27001, NIS2, IT-SiG, TISAX und Best Practices.">
+  <meta property="og:title" content="LinqSec Blog – Aktuelles zu Sicherheit, Datenschutz & Compliance">
+  <meta property="og:description" content="Der LinqSec Blog informiert Unternehmen im DACH-Raum zu Compliance, Datenschutz und IT-Sicherheit. Praxisnah, aktuell und sicherheitsbewusst.">
+  <meta property="og:image" content="logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://socialbusiness.github.io/Linqsec/blog.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="all">
+</head>
+<body>
+  <header class="header" id="header">
+    <button type="button" class="burger" id="burger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo"><img src="logo.svg" alt="LinqSec Logo" height="40"/></a>   
+    <nav class="navbar" id="navbar">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#preise">Preise</a></li>
+        <li><a href="index.html#about">Über uns</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="linqsec-ai.html">LINQSEC AI</a></li>
+        <li><a href="demo.html">Demo starten</a></li> 
+        <li class="submenu-parent"><a href="blog.html">Blog</a>
+          <ul class="submenu">
+            <li><a href="/blog/dsgvo-bussgelder-vermeiden.html">Praxis-Check: So vermeiden Sie DSGVO-Bußgelder 2025</a></li>
+            <li><a href="/blog/iso27001-stolperfallen.html">ISO 27001: 5 Stolperfallen bei der Zertifizierung</a></li>
+            <li><a href="/blog/nis2-aenderungen.html">NIS2-Richtlinie: Was ändert sich für Ihr Unternehmen?</a></li>
+            <li><a href="/blog/it-sig2-pflichten.html">IT-Sicherheitsgesetz 2.0: Die wichtigsten Pflichten im Überblick</a></li>
+            <li><a href="/blog/tisax-audit-tipps.html">TISAX: Erfolgsfaktoren für die Audit-Vorbereitung</a></li>
+            <li><a href="/blog/security-awareness-massnahmen.html">Security Awareness: 7 Maßnahmen für mehr IT-Sicherheit</a></li>
+            <li><a href="/blog/zero-trust-mittelstand.html">Zero Trust in der Praxis: So setzen Mittelständler das Modell erfolgreich um</a></li>
+            <li><a href="/blog/c5-vs-iso27001.html">C5-Testat vs. ISO 27001: Welcher Standard passt zu Ihrem Unternehmen?</a></li>
+            <li><a href="/blog/compliance-automatisierung-2025.html">Compliance automatisieren: Welche Aufgaben sich 2025 wirklich digitalisieren lassen</a></li>
+            <li><a href="/blog/haftungsrisiken-compliance.html">Haftungsrisiken für Geschäftsführende bei Compliance-Verstößen – was Sie wissen müssen</a></li>
+            <li><a href="/blog/best-practices-informationssicherheit.html">7 Best Practices für gelebte Informationssicherheit im Mittelstand</a></li>
+            <li><a href="/blog/av-vertraege-2025.html">AV-Verträge rechtssicher gestalten: Darauf kommt es in 2025 an</a></li>
+            <li><a href="/blog/soc2-europa-dach.html">SOC 2 in Europa: Relevanz, Unterschiede & Umsetzungstipps für DACH-Unternehmen</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button type="button" class="mode-toggle" id="modeToggle" aria-label="Dark/Light Mode umschalten">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <!-- Halbmond -->
+        <path
+          d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"
+          fill="#3533cd"
+          stroke="#3533cd"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+  </header>
+  <main>
+    <div class="blog-container">
+  <div class="blog-header">
+    <h1 class="main-h1">LINQSEC – Aktuelles zu Sicherheit, Datenschutz &amp; Compliance</h1>
+    <p>Im DACH-Raum stehen Unternehmen vor stetig wachsenden Anforderungen an Datenschutz, Informationssicherheit und Compliance. Unser Blog liefert praxisnahe Einblicke, aktuelle Entwicklungen und wertvolle Tipps für Entscheider, IT-Verantwortliche und Datenschutzbeauftragte.</p>
+  </div>
+<div class="blog-search-filter">
+  <input type="search" id="blogSearch" placeholder="Suche im Blog…" aria-label="Blog durchsuchen">
+  <select id="blogFilter" aria-label="Kategorie filtern">
+    <option value="Alle Kategorien">Alle Kategorien</option>
+    <option value="DSGVO">DSGVO</option>
+    <option value="ISO 27001">ISO 27001</option>
+    <option value="NIS2">NIS2</option>
+    <option value="IT-SiG">IT-SiG</option>
+    <option value="TISAX">TISAX</option>
+    <option value="Security Best Practices">Security Best Practices</option>
+    <option value="Automatisierung & Tools">Automatisierung & Tools</option>
+    <option value="Recht & Haftung">Recht & Haftung</option>
+  </select>
+</div>
+    <div class="blog-grid">
+        <!-- DSGVO Bußgelder vermeiden -->
+        <article class="blog-card" data-category="DSGVO">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">DSGVO</span>
+            <div class="blog-title">Praxis-Check: So vermeiden Sie DSGVO-Bußgelder 2025</div>
+            <div class="blog-excerpt">Erfahren Sie, welche häufigen Fehler Unternehmen im Umgang mit personenbezogenen Daten machen und wie Sie mit LinqSec und klaren Prozessen Risiken minimieren.</div>
+            <a class="blog-link" href="/blog/dsgvo-bussgelder-vermeiden.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- ISO 27001 Stolperfallen -->
+        <article class="blog-card" data-category="ISO 27001">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">ISO 27001</span>
+            <div class="blog-title">ISO 27001: 5 Stolperfallen bei der Zertifizierung</div>
+            <div class="blog-excerpt">Von fehlender Dokumentation bis zu unklaren Verantwortlichkeiten – diese Herausforderungen sollten Sie auf dem Weg zur ISO 27001-Zertifizierung kennen.</div>
+            <a class="blog-link" href="/blog/iso27001-stolperfallen.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- NIS2 Änderungen -->
+        <article class="blog-card" data-category="NIS2">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">NIS2</span>
+            <div class="blog-title">NIS2-Richtlinie: Was ändert sich für Ihr Unternehmen?</div>
+            <div class="blog-excerpt">Die neue EU-Richtlinie bringt verschärfte Anforderungen für viele Branchen. Wir zeigen, wie Sie sich frühzeitig vorbereiten und Compliance sichern.</div>
+            <a class="blog-link" href="/blog/nis2-aenderungen.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- IT-SiG 2.0 Pflichten -->
+        <article class="blog-card" data-category="IT-SiG">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">IT-SiG</span>
+            <div class="blog-title">IT-Sicherheitsgesetz 2.0: Die wichtigsten Pflichten im Überblick</div>
+            <div class="blog-excerpt">Welche neuen Vorgaben bringt das IT-Sicherheitsgesetz 2.0? Ein kompakter Leitfaden für IT-Leiter und Security-Beauftragte.</div>
+            <a class="blog-link" href="/blog/it-sig2-pflichten.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- AV-Verträge 2025 -->
+        <article class="blog-card" data-category="DSGVO">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">DSGVO</span>
+            <div class="blog-title">AV-Verträge rechtssicher gestalten: Darauf kommt es in 2025 an</div>
+            <div class="blog-excerpt">So gestalten Sie AV-Verträge 2025 rechtssicher: Worauf es bei Datenschutz, neuen Pflichten und aktuellen Stolperfallen wirklich ankommt.</div>
+            <a class="blog-link" href="/blog/av-vertraege-2025.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- TISAX Audit Tipps -->
+        <article class="blog-card" data-category="TISAX">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">TISAX</span>
+            <div class="blog-title">TISAX: Erfolgsfaktoren für die Audit-Vorbereitung</div>
+            <div class="blog-excerpt">So bereiten Sie Ihr Unternehmen optimal auf das TISAX-Assessment vor und vermeiden typische Fallstricke bei der Informationssicherheit.</div>
+            <a class="blog-link" href="/blog/tisax-audit-tipps.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Security Awareness Maßnahmen -->
+        <article class="blog-card" data-category="Security Best Practices">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Security Best Practices</span>
+            <div class="blog-title">Security Awareness: 7 Maßnahmen für mehr IT-Sicherheit</div>
+            <div class="blog-excerpt">Wie Sie mit gezielter Sensibilisierung und klaren Prozessen das Sicherheitsniveau in Ihrem Unternehmen nachhaltig erhöhen.</div>
+            <a class="blog-link" href="/blog/security-awareness-massnahmen.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Zero Trust Mittelstand -->
+        <article class="blog-card" data-category="Security Best Practices">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Security Best Practices</span>
+            <div class="blog-title">Zero Trust in der Praxis: So setzen Mittelständler das Modell erfolgreich um</div>
+            <div class="blog-excerpt">Zero Trust ist längst mehr als ein Trend. Gerade für mittelständische Unternehmen bietet das Modell einen praxisnahen Ansatz, um moderne Cyberbedrohungen abzuwehren. Ein Leitfaden für IT-Teams und Compliance-Verantwortliche.</div>
+            <a class="blog-link" href="/blog/zero-trust-mittelstand.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- C5 vs. ISO 27001 -->
+        <article class="blog-card" data-category="ISO 27001">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">ISO 27001</span>
+            <div class="blog-title">C5-Testat vs. ISO 27001: Welcher Standard passt zu Ihrem Unternehmen?</div>
+            <div class="blog-excerpt">Die Wahl des passenden Standards für Informationssicherheit ist ein strategischer Faktor. C5-Testat und ISO/IEC 27001 sind zwei der wichtigsten Standards im deutschsprachigen Raum. Doch worin liegen die Unterschiede und wie finden Unternehmen den richtigen Weg?</div>
+            <a class="blog-link" href="/blog/c5-vs-iso27001.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Compliance Automatisierung 2025 -->
+        <article class="blog-card" data-category="Automatisierung & Tools">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Automatisierung & Tools</span>
+            <div class="blog-title">Compliance automatisieren: Welche Aufgaben sich 2025 wirklich digitalisieren lassen</div>
+            <div class="blog-excerpt">Die Anforderungen an Compliance steigen ständig – und damit auch der Aufwand für Unternehmen. Automatisierung kann helfen, Prozesse effizienter, transparenter und fehlerfreier zu gestalten. Doch nicht jede Aufgabe lässt sich digitalisieren. Worauf kommt es 2025 wirklich an?</div>
+            <a class="blog-link" href="/blog/compliance-automatisierung-2025.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Haftungsrisiken Compliance -->
+        <article class="blog-card" data-category="Recht & Haftung">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Recht & Haftung</span>
+            <div class="blog-title">Haftungsrisiken für Geschäftsführende bei Compliance-Verstößen – was Sie wissen müssen</div>
+            <div class="blog-excerpt">Compliance ist Chefsache – und Verstöße können für Geschäftsführende und Vorstände persönlich teuer werden. Die Anforderungen an Sorgfalt und Überwachung steigen, während Behörden und Gerichte immer härter durchgreifen. Was bedeutet das konkret für die Unternehmensleitung?</div>
+            <a class="blog-link" href="/blog/haftungsrisiken-compliance.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Best Practices Informationssicherheit -->
+        <article class="blog-card" data-category="Security Best Practices">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Security Best Practices</span>
+            <div class="blog-title">7 Best Practices für gelebte Informationssicherheit im Mittelstand</div>
+            <div class="blog-excerpt">Informationssicherheit ist kein Projekt, sondern ein kontinuierlicher Prozess. Diese Best Practices helfen mittelständischen Unternehmen, ihre Sicherheitskultur nachhaltig zu stärken.</div>
+            <a class="blog-link" href="/blog/best-practices-informationssicherheit.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- SOC 2 Europa DACH -->
+        <article class="blog-card" data-category="Automatisierung & Tools">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Automatisierung & Tools</span>
+            <div class="blog-title">SOC 2 in Europa: Relevanz, Unterschiede & Umsetzungstipps für DACH-Unternehmen</div>
+            <div class="blog-excerpt">SOC 2 ist für viele Unternehmen in Europa relevant. Wir beleuchten die wichtigsten Unterschiede zu anderen Standards und geben Tipps für die Umsetzung in der DACH-Region.</div>
+            <a class="blog-link" href="/blog/soc2-europa-dach.html">Weiterlesen</a>
+          </div>
+        </article>
+
+        <!-- Beispielartikel 4 -->
+        <article class="blog-card" data-category="IT-SiG">
+  <img class="blog-image" alt="Blog Bild">
+  <div class="blog-content">
+    <span class="blog-category">IT-SiG</span>
+            <div class="blog-title">IT-Sicherheitsgesetz 2.0: Die wichtigsten Pflichten im Überblick</div>
+            <div class="blog-excerpt">Welche neuen Vorgaben bringt das IT-Sicherheitsgesetz 2.0? Ein kompakter Leitfaden für IT-Leiter und Security-Beauftragte.</div>
+            <a class="blog-link" href="/blog/it-sig2-pflichten.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Datenschutz -->
+        <article class="blog-card" data-category="DSGVO">
+   <img class="blog-image" alt="Blog Bild">
+   <div class="blog-content">
+     <span class="blog-category">DSGVO</span>
+     <div class="blog-title">AV-Verträge rechtssicher gestalten: Darauf kommt es in 2025 an</div>
+     <div class="blog-excerpt">So gestalten Sie AV-Verträge 2025 rechtssicher: Worauf es bei Datenschutz, neuen Pflichten und aktuellen Stolperfallen wirklich ankommt.</div>
+    <a class="blog-link" href="/blog/av-vertraege-2025.html">Weiterlesen</a>
+   </div>
+  </article>
+        <!-- TISAX-Audit-Tipps -->
+         <article class="blog-card" data-category="TISAX">
+  <img class="blog-image" alt="Blog Bild">
+  <div class="blog-content">
+    <span class="blog-category">TISAX</span>
+            <div class="blog-title">TISAX: Erfolgsfaktoren für die Audit-Vorbereitung</div>
+            <div class="blog-excerpt">So bereiten Sie Ihr Unternehmen optimal auf das TISAX-Assessment vor und vermeiden typische Fallstricke bei der Informationssicherheit.</div>
+            <a class="blog-link" href="/blog/tisax-audit-tipps.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Security-Awarness -->
+        <article class="blog-card" data-category="Security Best Practices">
+  <img class="blog-image" alt="Blog Bild">
+  <div class="blog-content">
+    <span class="blog-category">Security Best Practices</span>
+            <div class="blog-title">Security Awareness: 7 Maßnahmen für mehr IT-Sicherheit</div>
+            <div class="blog-excerpt">Wie Sie mit gezielter Sensibilisierung und klaren Prozessen das Sicherheitsniveau in Ihrem Unternehmen nachhaltig erhöhen.</div>
+            <a class="blog-link" href="/blog/security-awareness-massnahmen.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Zero Trust Mittelstand -->
+        <article class="blog-card" data-category="Security Best Practices">
+  <img class="blog-image" alt="Blog Bild">
+  <div class="blog-content">
+    <span class="blog-category">Security Best Practices</span>
+            <div class="blog-title">Zero Trust in der Praxis: So setzen Mittelständler das Modell erfolgreich um</div>
+            <div class="blog-excerpt">Zero Trust ist längst mehr als ein Trend. Gerade für mittelständische Unternehmen bietet das Modell einen praxisnahen Ansatz, um moderne Cyberbedrohungen abzuwehren. Ein Leitfaden für IT-Teams und Compliance-Verantwortliche.</div>
+            <a class="blog-link" href="/blog/zero-trust-mittelstand.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- C5 vs. ISO 27001 -->
+        <article class="blog-card" data-category="ISO 27001">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">ISO 27001</span>
+            <div class="blog-title">C5-Testat vs. ISO 27001: Welcher Standard passt zu Ihrem Unternehmen?</div>
+            <div class="blog-excerpt">Die Wahl des passenden Standards für Informationssicherheit ist ein strategischer Faktor. C5-Testat und ISO/IEC 27001 sind zwei der wichtigsten Standards im deutschsprachigen Raum. Doch worin liegen die Unterschiede und wie finden Unternehmen den richtigen Weg?</div>
+            <a class="blog-link" href="/blog/c5-vs-iso27001.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Compliance Automatisierung 2025 -->
+        <article class="blog-card" data-category="Automatisierung & Tools">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Automatisierung & Tools</span>
+            <div class="blog-title">Compliance automatisieren: Welche Aufgaben sich 2025 wirklich digitalisieren lassen</div>
+            <div class="blog-excerpt">Die Anforderungen an Compliance steigen ständig – und damit auch der Aufwand für Unternehmen. Automatisierung kann helfen, Prozesse effizienter, transparenter und fehlerfreier zu gestalten. Doch nicht jede Aufgabe lässt sich digitalisieren. Worauf kommt es 2025 wirklich an?</div>
+            <a class="blog-link" href="/blog/compliance-automatisierung-2025.html">Weiterlesen</a>
+          </div>
+        </article>
+        <!-- Haftungsrisiken Compliance -->
+        <article class="blog-card" data-category="Recht & Haftung">
+          <img class="blog-image" alt="Blog Bild">
+          <div class="blog-content">
+            <span class="blog-category">Recht & Haftung</span>
+            <div class="blog-title">Haftungsrisiken für Geschäftsführende bei Compliance-Verstößen – was Sie wissen müssen</div>
+            <div class="blog-excerpt">Compliance ist Chefsache – und Verstöße können für Geschäftsführende und Vorstände persönlich teuer werden. Die Anforderungen an Sorgfalt und Überwachung steigen, während Behörden und Gerichte immer härter durchgreifen. Was bedeutet das konkret für die Unternehmensleitung?</div>
+            <a class="blog-link" href="/blog/haftungsrisiken-compliance.html">Weiterlesen</a>
+          </div>
+        </article>
+      </div>
+      <!-- Hinweis auf Einzelartikel-Struktur -->
+      <div class="blog-article-note">
+        Einzelne Blogartikel sind künftig direkt erreichbar unter <code>/blog/artikelname</code>.
+      </div>
+    </div>
+  </main>
+  <footer class="footer" id="footer">
+    <div class="footer-links">
+      <a href="#">Impressum</a>|
+      <a href="#">Datenschutz</a>|
+      <a href="#">AGB</a>
+    </div>
+    <div class="footer-social">
+      <a href="mailto:info@linqsec.de" aria-label="E-Mail"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M2 4h20v16H2z" fill="none" stroke="#fff" stroke-width="2"/><path d="M22 4L12 13 2 4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 10v8M6 6v.01M10 14v-4a2 2 0 1 1 4 0v4m0 0v4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+    </div>
+    <div class="footer-note">© 2025 LinqSec – Alle Rechte vorbehalten</div>
+  </footer>
+  <div class="cookie-banner" id="cookieBanner">
+    <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr
+        erfahren</a></span>
+    <button id="cookieAccept">Verstanden</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
