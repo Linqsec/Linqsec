@@ -224,19 +224,17 @@
     <!-- Kontaktformular -->
     <section class="contact" id="kontakt">
       <h2>Kontakt aufnehmen</h2>
-      <form class="contact-form" id="contactForm" action="/api/contact" method="POST">
+      <form class="contact-form" id="contactForm" action="/api/contact" method="POST" autocomplete="on" novalidate>
         <div class="form-group">
           <label for="name">Name*</label>
-          <input type="text" id="name" name="name" required autocomplete="name" />
+          <input type="text" id="name" name="name" required autocomplete="name">
         </div>
         <div class="form-group">
           <label for="email">E-Mail*</label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
-        </div>
+          <input type="email" id="email" name="email" required autocomplete="email">        </div>
         <div class="form-group">
           <label for="company">Unternehmen</label>
-          <input type="text" id="company" name="company" autocomplete="organization" />
-        </div>
+          <input type="text" id="company" name="company" required autocomplete="organization">        </div>
         <div class="form-group">
           <label for="message">Nachricht*</label>
           <textarea id="message" name="message" rows="4" required></textarea>
@@ -247,8 +245,8 @@
     Ich akzeptiere die <a href="datenschutz.html" target="_blank" class="privacy-link">Datenschutzhinweise</a> und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.
   </label>
 </div>
-<button type="submit" id="submit" class="cta-btn">Absenden</button>
-        <div class="form-status" id="formStatus"></div>
+<button type="submit" id="submitBtn" class="cta-btn">Absenden</button>
+        <div class="formStatus" id="formStatus"></div>
         <p class="ds-gvo-hint">Mit Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß <a
             href="#">Datenschutzerklärung</a> zu.</p>
       </form>
