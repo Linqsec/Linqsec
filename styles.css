@@ -515,7 +515,7 @@ blockquote {
   justify-content: center;
   z-index: 2;
 }
-.logo img { height: 60px; }
+.logo img { height: 60px; margin-top: 1rem; }
 [data-theme='light'] .logo img {
   content: url('logo.svg');
 }
@@ -558,8 +558,8 @@ blockquote {
   cursor: pointer;
   align-content: center;
   position: absolute;
-  right: 0rem;
-  top: 0;
+  right: 1rem;
+  top: 0.5rem;
   z-index: 10;
 }
 
