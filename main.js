@@ -189,26 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
-//--- Ollama-Abfrage ---
-  async function queryOllama(prompt) {
-    const response = await fetch('/api/linqsec-ai', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'llama3.2:latest', // Passe ggf. den Modellnamen an
-        prompt: prompt,
-        stream: false
-      })
-    });
-    if (!response.ok) {
-      throw new Error('Ollama-Server nicht erreichbar oder Fehler: ' + response.status);
-    }
-    const data = await response.json();
-    return data.response;
-  }
   
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('ai-chat-form');
