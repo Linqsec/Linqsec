@@ -18,50 +18,43 @@ export default async function handler(req, res) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // mail.gmx.net
-      port: parseInt(process.env.SMTP_PORT, 10), // 587
-      secure: false, // TLS → false für Port 587
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT, 10),
+      secure: false, // GMX Port 587 → TLS → false
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
+    // ✅ Interne Mail an LinqSec
     const mailOptions = {
       from: `"LinqSec Kontakt" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER, // also linqsec@gmx.net
+      to: process.env.SMTP_USER,
       subject: 'Neue Kontaktanfrage über die Website',
       text: `Vorname: ${vorname || ''}\nNachname: ${nachname || ''}\nE-Mail: ${email}\nUnternehmen: ${unternehmen || ''}\nNachricht:\n${nachricht}`
     };
 
     await transporter.sendMail(mailOptions);
+
+    // ✉️ Bestätigungsmail an Absender (wird NICHT awaited, damit Antwort schnell kommt)
+    const confirmOptions = {
+      from: `LinqSec <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: 'Ihre Anfrage bei LinqSec',
+      text: `Hallo ${vorname || 'und guten Tag'},\n\nvielen Dank für Ihre Nachricht an LinqSec. Wir haben Ihre Anfrage erhalten und melden uns schnellstmöglich bei Ihnen.\n\nIhre Nachricht:\n"${nachricht}"\n\nFreundliche Grüße\nIhr LinqSec Team`
+    };
+
+    transporter.sendMail(confirmOptions).catch(err => {
+      console.warn('⚠️ Bestätigungsmail fehlgeschlagen:', err.message);
+    });
+
+    // ✅ Antwort an Frontend
     res.status(200).json({ success: true });
 
   } catch (err) {
-    console.error('Mailversand fehlgeschlagen:', err);
+    console.error('❌ Mailversand fehlgeschlagen:', err);
     res.status(500).json({ error: 'Mailversand fehlgeschlagen', details: err.message });
   }
 }
 
-// Bestätigungsmail an den Absender
-const confirmOptions = {
-  from: `LinqSec <${process.env.SMTP_USER}>`,
-  to: email,
-  subject: 'Ihre Anfrage bei LinqSec',
-  text: `Hallo ${Name || ''},
-
-vielen Dank für Ihre Nachricht an LinqSec. Wir haben Ihre Anfrage erhalten und melden uns zeitnah bei Ihnen.
-
-Ihre Nachricht:
-"${nachricht}"
-
-Freundliche Grüße  
-Ihr LinqSec Team`
-};
-
-try {
-  await transporter.sendMail(confirmOptions);
-} catch (err) {
-  console.error('Bestätigungsmail fehlgeschlagen:', err);
-  // Ignorieren – Kontaktmail wurde ja trotzdem versendet
-}
