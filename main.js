@@ -25,7 +25,7 @@ function updateLogo() {
   const logoImg = document.querySelector('.logo img');
   const theme = document.documentElement.getAttribute('data-theme');
   if (logoImg) {
-    logoImg.src = theme === 'dark' ? '/logo1.svg' : '/logo.svg';
+    logoImg.src = theme === 'dark' ? 'logo1.svg' : 'logo.svg';
     console.log('Logo gesetzt auf:', logoImg.src, 'Theme:', theme);
   }
 }
