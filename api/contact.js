@@ -49,6 +49,32 @@ export default async function handler(req, res) {
       console.warn('⚠️ Bestätigungsmail fehlgeschlagen:', err.message);
     });
 
+    // 📦 Kontaktanfrage in Supabase loggen
+try {
+  const supabaseRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/kontaktanfragen`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': process.env.SUPABASE_KEY,
+      'Authorization': `Bearer ${process.env.SUPABASE_KEY}`,
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify({
+      vorname,
+      nachname,
+      email,
+      unternehmen,
+      nachricht
+    })
+  });
+
+  if (!supabaseRes.ok) {
+    console.warn('⚠️ Supabase-Logging fehlgeschlagen:', await supabaseRes.text());
+  }
+} catch (logErr) {
+  console.warn('⚠️ Logging-Fehler:', logErr.message);
+}
+
     // ✅ Antwort an Frontend
     res.status(200).json({ success: true });
 
