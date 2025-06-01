@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 body, html {
-  min-height: 100vh;
+  min-height: 100%;
   font-weight: 300;
   transition: background 0.3s, color 0.3s;
   font-family: 'Montserrat', Arial, sans-serif;
@@ -490,7 +490,7 @@ blockquote {
 .header {
   position: absolute;
   top: 0;
-  width: 110%;
+  width: 100%;
   background: var(--bg);
   z-index: 1000;
   box-shadow: var(--shadow);
@@ -558,7 +558,7 @@ blockquote {
   cursor: pointer;
   align-content: center;
   position: absolute;
-  right: 1rem;
+  right: 0rem;
   top: 0;
   z-index: 10;
 }
