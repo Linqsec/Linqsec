@@ -31,7 +31,7 @@ body, html {
   transition: background 0.3s, color 0.3s;
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0rem;
-  padding: 0rem;
+  padding-top: 1rem;
 }
 .header, .navbar, .nav-links, .nav-links a, .burger {
   background: var(--bg);
