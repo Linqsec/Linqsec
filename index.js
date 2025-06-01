@@ -4,14 +4,36 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const nodemailer = require('nodemailer');
+
 // Initialisiere OpenAI-Client
-import OpenAI from "openai";
+const OpenAI = require ('openai');
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const response = await client.responses.create({
-    model: "gpt-4.1",
-    input: "Du bist ein empathischer, sehr kompetenter Compliance Berater und führst Unternehmen professionell durch den Compliance_Prozess bis zum Audit.",
+app.post('/api/linqsec-ai', async (req, res) => {
+  const { question } = req.body;
+
+  if (!question || typeof question !== 'string') {
+    return res.status(400).json({ error: 'Frage fehlt oder ist ungültig.' });
+  }
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: process.env.OPENAI_MODEL || "gpt-4",
+      messages: [
+        { role: "system", content: "Du bist LINQSEC AI, ein deutschsprachiger, kompetenter Compliance-Assistent für IT- und Datenschutzfragen." },
+        { role: "user", content: question }
+      ],
+      temperature: 0.4,
+      max_tokens: 700
+    });
+
+    const answer = completion.choices?.[0]?.message?.content || "Keine Antwort erhalten.";
+    res.json({ answer });
+  } catch (error) {
+    console.error("OpenAI API Fehler:", error);
+    res.status(500).json({ error: 'Fehler beim Abrufen der KI-Antwort' });
+  }
 });
 
 console.log(response.output_text);
