@@ -49,7 +49,7 @@ body, html {
 @media (max-width: 900px) {
   /* Burger-Drawer-Styles für alle Breakpoints < 900px */
   .header {
-    height: 100px;
+    height: 70px;
     padding: 0 0.5rem;
   }
   .navbar {
@@ -131,13 +131,13 @@ body, html {
   .pricing-grid { justify-content: center !important; }
   /* Feinanpassungen für ganz kleine Geräte */
   .header {
-    height: 50px;
+    height: 70px;
   }
   .navbar {
-    height: 50px;
+    height: 60px;
   }
   .logo {
-    height: 40px;
+    height: 50px;
   }
   .integration-logos img {
     max-width: 32px;
@@ -164,7 +164,7 @@ body, html {
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,7 +174,7 @@ body, html {
     position: absolute;
     right: 0;
     top: 0;
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center;
     background: none;
@@ -497,7 +497,7 @@ blockquote {
   z-index: 1000;
   box-shadow: var(--shadow);
   display: flex;
-  height: 80px;
+  height: 70px;
 }
 .navbar {
   display: flex;
