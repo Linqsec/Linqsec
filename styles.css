@@ -30,8 +30,8 @@ body, html {
   font-weight: 300;
   transition: background 0.3s, color 0.3s;
   font-family: 'Montserrat', Arial, sans-serif;
-  margin: -1rem;
-  padding: 1rem;
+  margin: 0rem;
+  padding: 0rem;
 }
 .header, .navbar, .nav-links, .nav-links a, .burger {
   background: var(--bg);
@@ -183,8 +183,6 @@ body, html {
   }
 
   /* Layout & Navigation */
-
-  .header { padding: 0 0.5rem; height: 70px; }
 
   .burger {
     color: var(--text);
@@ -492,7 +490,7 @@ blockquote {
 .header {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 110%;
   background: var(--bg);
   z-index: 1000;
   box-shadow: var(--shadow);
