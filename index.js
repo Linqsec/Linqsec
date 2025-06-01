@@ -104,11 +104,11 @@ app.post('/api/linqsec-ai', async (req, res) => {
   }
 });
 
-// 📦 Statische Dateien ganz am Ende
-app.use(express.static(__dirname));
-
 // Server starten
 const port = 3000;
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server läuft auf Port ${port} (Netzwerkzugriff aktiviert)`);
 });
+
+// 📦 Statische Dateien ganz am Ende
+app.use(express.static(__dirname));
