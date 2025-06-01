@@ -13,11 +13,6 @@
   --shadow: 0 2px 16px 0 rgba(223, 218, 231, 0.3);
 }
 
-.logo img { height: 60px; }
-[data-theme='dark'] .logo img {
-  content: url('logo1.svg');
-}
-
 :root {
   --bg: #fff;
   --text: #000;
