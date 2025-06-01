@@ -42,3 +42,26 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Mailversand fehlgeschlagen', details: err.message });
   }
 }
+
+// Bestätigungsmail an den Absender
+const confirmOptions = {
+  from: `LinqSec <${process.env.SMTP_USER}>`,
+  to: email,
+  subject: 'Ihre Anfrage bei LinqSec',
+  text: `Hallo ${Name || ''},
+
+vielen Dank für Ihre Nachricht an LinqSec. Wir haben Ihre Anfrage erhalten und melden uns zeitnah bei Ihnen.
+
+Ihre Nachricht:
+"${nachricht}"
+
+Freundliche Grüße  
+Ihr LinqSec Team`
+};
+
+try {
+  await transporter.sendMail(confirmOptions);
+} catch (err) {
+  console.error('Bestätigungsmail fehlgeschlagen:', err);
+  // Ignorieren – Kontaktmail wurde ja trotzdem versendet
+}
