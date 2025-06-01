@@ -180,6 +180,8 @@ body, html {
     background: none;
     border: none;
     z-index: 2;
+    right: 1rem;
+    top: 0.5rem;
   }
 
   /* Layout & Navigation */
