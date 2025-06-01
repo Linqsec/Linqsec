@@ -1,26 +1,40 @@
-// Burger-Menü Toggle
+// ========================
+// 🔁 BURGER-MENÜ
+// ========================
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 if (burger && navLinks) {
-  burger.addEventListener('click', () => { navLinks.classList.toggle('open');
-});
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
 
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 900 && navLinks.classList.contains('open')) { setTimeout(() => { navLinks.classList.remove('open');}, 200);}
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 900 && navLinks.classList.contains('open')) {
+        setTimeout(() => {
+          navLinks.classList.remove('open');
+        }, 200);
+      }
     });
   });
-};
+}
 
-// Sticky Header
+// ========================
+// 📌 STICKY HEADER
+// ========================
 const header = document.getElementById('header');
 let lastScroll = 0;
 if (header) {
-  window.addEventListener('scroll', () => { const curr = window.scrollY;
-    if (curr > lastScroll && curr > 80) { header.style.boxShadow = 'none'; } else { header.style.boxShadow = ''; } lastScroll = curr; });
-  }
+  window.addEventListener('scroll', () => {
+    const curr = window.scrollY;
+    header.style.boxShadow = (curr > lastScroll && curr > 80) ? 'none' : '';
+    lastScroll = curr;
+  });
+}
 
-// --- Theme & Logo ---
+// ========================
+// 🎨 THEME & LOGO
+// ========================
 function updateLogo() {
   const logoImg = document.querySelector('.logo img');
   const theme = document.documentElement.getAttribute('data-theme');
@@ -35,28 +49,34 @@ function setTheme(theme) {
   updateLogo();
 }
 
-//--- Theme beim Laden setzen ---
-document.addEventListener('DOMContentLoaded', function() {
+// ========================
+// ⚙️ DOMContentLoaded
+// ========================
+document.addEventListener('DOMContentLoaded', function () {
+  // Theme laden
   const savedTheme = localStorage.getItem('theme') || 'light';
   setTheme(savedTheme);
 
-// --- Mode Toggle ---
+  // Theme Toggle
   const modeToggle = document.getElementById('modeToggle');
   if (modeToggle) {
-    modeToggle.addEventListener('click', function() {
+    modeToggle.addEventListener('click', function () {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       setTheme(newTheme);
     });
   }
-// --- Cookie Banner ---
+
+  // ========================
+  // 🍪 COOKIE BANNER
+  // ========================
   const cookieBanner = document.querySelector('.cookie-banner');
   const cookieAccept = document.getElementById('cookieAccept');
   if (cookieBanner) {
     if (document.cookie.indexOf('cookieAccepted=true') === -1) {
       cookieBanner.classList.remove('hide');
       if (cookieAccept) {
-        cookieAccept.addEventListener('click', function() {
+        cookieAccept.addEventListener('click', function () {
           cookieBanner.classList.add('hide');
           document.cookie = "cookieAccepted=true; path=/; max-age=31536000";
         });
@@ -65,101 +85,100 @@ document.addEventListener('DOMContentLoaded', function() {
       cookieBanner.classList.add('hide');
     }
   }
-});
 
-// --- Kontaktformular: Ladezustand und Feedback
-const contactForm = document.getElementById('contactForm');
-const submitBtn = document.getElementById('submitBtn');
-const statusMsg = document.getElementById('formStatus');
-if (contactForm && submitBtn && statusMsg) { contactForm.addEventListener('submit', async (e) => { e.preventDefault();
- submitBtn.disabled = true;
- statusMsg.textContent = 'Wird gesendet...';
- const formData = new FormData(contactForm);
- const data = Object.fromEntries(formData.entries());
- console.log('Formulardaten:', data);
+  // ========================
+  // ✉️ KONTAKTFORMULAR
+  // ========================
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusMsg = document.getElementById('formStatus');
+  if (contactForm && submitBtn && statusMsg) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      statusMsg.textContent = 'Wird gesendet...';
 
-// Feld 'message' in 'nachricht' umbenennen (Backend erwartet 'nachricht')
-if (data.message !== undefined) {
-  data.nachricht = data.message;
-  delete data.message;
-}
-// Feld 'privacy' in 'dsgvoZustimmung' umbenennen (Backend erwartet 'dsgvoZustimmung')
-if (data.privacy !== undefined) {
-  data.dsgvoZustimmung = (data.privacy === 'on' || data.privacy === true || data.privacy === 'true');
-  delete data.privacy;
-}
- try {
-const response = await fetch(window.location.origin + '/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-const res = await response.json();
-      if (res.success) {
-        statusMsg.textContent = 'Nachricht gesendet!';
-        contactForm.reset();
-      } else {
-        statusMsg.textContent = res.error || 'Fehler beim Senden.';
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // Feldzuordnung
+      if (data.message !== undefined) {
+        data.nachricht = data.message;
+        delete data.message;
       }
-    } catch (err) {
-      statusMsg.textContent = 'Serverfehler.';
-    }
-    submitBtn.disabled = false;
-  });
-}
-
-// --- DEMO-FORMULAR: gleiche Datenumwandlung wie beim Kontaktformular
-const demoForm = document.getElementById('demoForm');
-if (demoForm) {
-  // Hole Button und Status nur aus dem Demo-Formular-Kontext!
-  const demoSubmitBtn = demoForm.querySelector('button[type="submit"]');
-  const demoStatusMsg = demoForm.querySelector('.formStatus');
-  demoForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (demoSubmitBtn) demoSubmitBtn.disabled = true;
-    if (demoStatusMsg) demoStatusMsg.textContent = 'Wird gesendet...';
-    const formData = new FormData(demoForm);
-    const data = Object.fromEntries(formData.entries());
-    // Name-Feld aufteilen in Vor- und Nachname (optional)
-    if (data.name) {
-      const [vorname, ...rest] = data.name.trim().split(' ');
-      data.vorname = vorname;
-      data.nachname = rest.join(' ');
-      delete data.name;
-    }
-    // Feld 'message' in 'nachricht' umbenennen
-    if (data.message !== undefined) {
-      data.nachricht = data.message;
-      delete data.message;
-    }
-    // Feld 'privacy' in 'dsgvoZustimmung' umbenennen
-    if (data.privacy !== undefined) {
-      data.dsgvoZustimmung = (data.privacy === 'on' || data.privacy === true || data.privacy === 'true');
-      delete data.privacy;
-    }
-    try {
-      const response = await fetch(window.location.origin + '/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const res = await response.json();
-      if (res.success) {
-        if (demoStatusMsg) demoStatusMsg.textContent = 'Nachricht gesendet!';
-        demoForm.reset();
-      } else {
-        if (demoStatusMsg) demoStatusMsg.textContent = res.error || 'Fehler beim Senden.';
+      if (data.privacy !== undefined) {
+        data.dsgvoZustimmung = (data.privacy === 'on' || data.privacy === true || data.privacy === 'true');
+        delete data.privacy;
       }
-    } catch (err) {
-      if (demoStatusMsg) demoStatusMsg.textContent = 'Serverfehler.';
-    }
-    if (demoSubmitBtn) demoSubmitBtn.disabled = false;
-  });
-}
 
-// --- Blog Filter + Suche ---
-document.addEventListener('DOMContentLoaded', function() {
-  // Blog Filter + Suche
+      try {
+        const response = await fetch(window.location.origin + '/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const res = await response.json();
+        statusMsg.textContent = res.success ? 'Nachricht gesendet!' : res.error || 'Fehler beim Senden.';
+        if (res.success) contactForm.reset();
+      } catch (err) {
+        statusMsg.textContent = 'Serverfehler.';
+      }
+      submitBtn.disabled = false;
+    });
+  }
+
+  // ========================
+  // 🧪 DEMO-FORMULAR
+  // ========================
+  const demoForm = document.getElementById('demoForm');
+  if (demoForm) {
+    const demoSubmitBtn = demoForm.querySelector('button[type="submit"]');
+    const demoStatusMsg = demoForm.querySelector('.formStatus');
+
+    demoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (demoSubmitBtn) demoSubmitBtn.disabled = true;
+      if (demoStatusMsg) demoStatusMsg.textContent = 'Wird gesendet...';
+
+      const formData = new FormData(demoForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // Namen aufsplitten
+      if (data.name) {
+        const [vorname, ...rest] = data.name.trim().split(' ');
+        data.vorname = vorname;
+        data.nachname = rest.join(' ');
+        delete data.name;
+      }
+
+      if (data.message !== undefined) {
+        data.nachricht = data.message;
+        delete data.message;
+      }
+      if (data.privacy !== undefined) {
+        data.dsgvoZustimmung = (data.privacy === 'on' || data.privacy === true || data.privacy === 'true');
+        delete data.privacy;
+      }
+
+      try {
+        const response = await fetch(window.location.origin + '/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const res = await response.json();
+        demoStatusMsg.textContent = res.success ? 'Nachricht gesendet!' : res.error || 'Fehler beim Senden.';
+        if (res.success) demoForm.reset();
+      } catch (err) {
+        demoStatusMsg.textContent = 'Serverfehler.';
+      }
+      if (demoSubmitBtn) demoSubmitBtn.disabled = false;
+    });
+  }
+
+  // ========================
+  // 📰 BLOG: Filter + Suche
+  // ========================
   const searchInput = document.getElementById('blogSearch');
   const filterSelect = document.getElementById('blogFilter');
   const cards = document.querySelectorAll('.blog-card');
@@ -180,51 +199,23 @@ document.addEventListener('DOMContentLoaded', function() {
     filterSelect.addEventListener('change', filterArticles);
   }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.blog-card').forEach(function(card) {
-    var category = card.getAttribute('data-category') || 'LINQSEC';
-    var img = card.querySelector('.blog-image');
+  // Dummy-Bilder nach Kategorie setzen
+  document.querySelectorAll('.blog-card').forEach(function (card) {
+    const category = card.getAttribute('data-category') || 'LINQSEC';
+    const img = card.querySelector('.blog-image');
     if (img) {
       img.src = 'https://placehold.co/600x400?text=' + encodeURIComponent(category);
     }
   });
-});
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('ai-chat-form');
-    const input = document.getElementById('ai-user-input');
-    const history = document.getElementById('ai-chat-history');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const userText = input.value.trim();
-      if (!userText) return;
-      // Nutzerfrage anzeigen
-      const userDiv = document.createElement('div');
-      userDiv.className = 'ai-chat-message user';
-      userDiv.textContent = userText;
-      history.appendChild(userDiv);
-      input.value = '';
-      // Ladeanzeige für KI-Antwort
-      const aiDiv = document.createElement('div');
-      aiDiv.className = 'ai-chat-message ai';
-      aiDiv.textContent = 'LINQSEC AI denkt...';
-      history.appendChild(aiDiv);
-      history.scrollTop = history.scrollHeight;
-      try {
-        const aiResponse = await queryOllama(userText);
-        aiDiv.textContent = aiResponse;
-      } catch (err) {
-        aiDiv.textContent = 'Fehler bei der Anfrage an die KI: ' + err.message;
-      }
-      history.scrollTop = history.scrollHeight;
-    });
-  });
 
-// LINQSEC AI Chat (nur auf linqsec-ai.html aktiv)
+  // ========================
+  // 🤖 LINQSEC AI Chat
+  // ========================
   const chatForm = document.getElementById('ai-chat-form');
   const chatInput = document.getElementById('ai-user-input');
   const chatHistory = document.getElementById('ai-chat-history');
   const sendBtn = document.getElementById('ai-send-btn');
+
   if (chatForm && chatInput && chatHistory && sendBtn) {
     function appendMessage(sender, text) {
       const msg = document.createElement('div');
@@ -233,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function() {
       chatHistory.appendChild(msg);
       chatHistory.scrollTop = chatHistory.scrollHeight;
     }
-    chatForm.addEventListener('submit', async function(e) {
+
+    chatForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const question = chatInput.value.trim();
       if (!question) return;
@@ -241,21 +233,17 @@ document.addEventListener('DOMContentLoaded', function() {
       chatInput.value = '';
       sendBtn.disabled = true;
       appendMessage('ai', '<span class="ai-typing">Antwort wird geladen...</span>');
+
       try {
         const res = await fetch('/api/linqsec-ai', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ question })
         });
-        // Entferne den Ladeplatzhalter
         const loadingMsg = chatHistory.querySelector('.ai-msg-ai .ai-typing');
         if (loadingMsg) loadingMsg.parentElement.parentElement.remove();
-        if (res.ok) {
-          const data = await res.json();
-          appendMessage('ai', data.answer || 'Es ist ein Fehler aufgetreten.');
-        } else {
-          appendMessage('ai', 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
-        }
+        const data = await res.json();
+        appendMessage('ai', data.answer || 'Es ist ein Fehler aufgetreten.');
       } catch {
         const loadingMsg = chatHistory.querySelector('.ai-msg-ai .ai-typing');
         if (loadingMsg) loadingMsg.parentElement.parentElement.remove();
@@ -265,6 +253,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  return { cookieAccept, cookieBanner };
 });
-
