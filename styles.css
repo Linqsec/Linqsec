@@ -172,16 +172,14 @@ body, html {
   }
   .burger {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 1rem;
+    top: 0.5rem;
     height: 50px;
     display: flex;
     align-items: center;
     background: none;
     border: none;
     z-index: 2;
-    right: 1rem;
-    top: 0.5rem;
   }
 
   /* Layout & Navigation */
