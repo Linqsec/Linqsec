@@ -1,8 +1,9 @@
 {
   "name": "linqsec-api",
+  "description": "API für LINQSEC AI",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
@@ -17,15 +18,6 @@
     "morgan": "^1.10.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.13",
-    "ollama": "^0.5.15"
-  }
-}
-{
-  "name": "linqsec",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
     "openai": "^4.21.0"
   }
 }
-
