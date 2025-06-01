@@ -20,7 +20,6 @@
     "ollama": "^0.5.15"
   }
 }
-
 {
   "name": "linqsec",
   "version": "1.0.0",
