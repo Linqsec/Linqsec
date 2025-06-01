@@ -173,7 +173,7 @@ body, html {
   .burger {
     position: absolute;
     right: 1rem;
-    top: 0.5rem;
+    top: 0rem;
     height: 50px;
     display: flex;
     align-items: center;
