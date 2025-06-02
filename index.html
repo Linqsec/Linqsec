@@ -13,17 +13,17 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <!-- Im <head> deiner HTML-Datei -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="all">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="all">
 </head>
 <body>
   <header class="header" id="header">
     <button type="button" class="burger" id="burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>    
-    <a href="" class="logo"><img src="logo.svg" alt="LinqSec Logo" height="40"></a>
+    <a href="" class="logo"><img src="logo.svg" alt="LinqSec Logo" height="60"></a>
     <nav class="navbar" id="navbar">
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#home">Home</a></li>
@@ -34,6 +34,9 @@
         <li><a href="linqsec-ai.html">LINQSEC AI</a></li>
         <li><a href="demo.html">Demo starten</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li><a href="admin.html">LinqSec Admin Dashboard</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
     </nav>
     <button type="button" class="mode-toggle" id="modeToggle" aria-label="Dark/Light Mode umschalten">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -46,6 +49,12 @@
         />
       </svg>
     </button>
+    <a href="login.html" class="profile-link" aria-label="Login/Profil">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="8" r="4" stroke="#3533cd" stroke-width="2" fill="none"/>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#3533cd" stroke-width="2" fill="none"/>
+      </svg>
+    </a>
   </header>
   <main>
     <!-- Hero Section -->

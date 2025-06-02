@@ -1,18 +1,44 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const nodemailer = require('nodemailer');
-const OpenAI = require('openai');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import helmet from "helmet";
+import mongoose from "mongoose";
+import authRoutes from "./api/auth.routes.js";
+import nodemailer from 'nodemailer';
+import OpenAI from 'openai';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
+app.use(helmet());
+
+// MongoDB verbinden
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log("MongoDB verbunden!");
+}).catch((err) => {
+  console.error("MongoDB Fehler:", err.message);
+});
+
+// Auth-Routen
+app.use("/api/auth", authRoutes);
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 // Middleware
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('combined'));
