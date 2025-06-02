@@ -101,29 +101,7 @@
     <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr erfahren</a></span>
     <button id="cookieAccept">Verstanden</button>
   </div>
-  <script src="main.js"></script>
-  <script>
-    // Formular-Umschaltung
-    document.getElementById('showRegister').onclick = function() {
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('registerForm').style.display = 'block';
-      document.getElementById('resetForm').style.display = 'none';
-    };
-    document.getElementById('showLogin').onclick = function() {
-      document.getElementById('loginForm').style.display = 'block';
-      document.getElementById('registerForm').style.display = 'none';
-      document.getElementById('resetForm').style.display = 'none';
-    };
-    document.getElementById('showReset').onclick = function() {
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('registerForm').style.display = 'none';
-      document.getElementById('resetForm').style.display = 'block';
-    };
-    document.getElementById('showLogin2').onclick = function() {
-      document.getElementById('loginForm').style.display = 'block';
-      document.getElementById('registerForm').style.display = 'none';
-      document.getElementById('resetForm').style.display = 'none';
-    };
-  </script>
+  <script src="api/auth.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
