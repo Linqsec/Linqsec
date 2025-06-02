@@ -58,6 +58,32 @@ function showStatus(message, isError = false) {
     }
   };
   
+   // Formular-Umschaltung
+   document.getElementById('showRegister').onclick = function(e) {
+  if (e) e.preventDefault();
+  document.getElementById('loginForm').classList.add('hidden');
+  document.getElementById('registerForm').classList.remove('hidden');
+  document.getElementById('resetForm').classList.add('hidden');
+};
+  document.getElementById('showLogin').onclick = function(e) {
+  if (e) e.preventDefault();
+  document.getElementById('loginForm').classList.remove('hidden');
+  document.getElementById('registerForm').classList.add('hidden');
+  document.getElementById('resetForm').classList.add('hidden');
+};
+  document.getElementById('showReset').onclick = function(e) {
+  if (e) e.preventDefault();
+  document.getElementById('loginForm').classList.add('hidden');
+  document.getElementById('registerForm').classList.add('hidden');
+  document.getElementById('resetForm').classList.remove('hidden');
+};
+  document.getElementById('showLogin2').onclick = function(e) {
+  if (e) e.preventDefault();
+  document.getElementById('loginForm').classList.remove('hidden');
+  document.getElementById('registerForm').classList.add('hidden');
+  document.getElementById('resetForm').classList.add('hidden');
+};
+
   // PASSWORT-RESET
   document.getElementById('resetForm').onsubmit = async function (e) {
     e.preventDefault();
