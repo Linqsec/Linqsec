@@ -20,11 +20,13 @@
   color: var(--text);
   --accent: #3533cd;
   --accent-gradient: linear-gradient(90deg, #320366 0%, #3533cd 100%);
-  --shadow: 0 2px 16px 0 rgb(42 18 69 / 32%);
+  --shadow: 0 2px 16px 0 rgba(61, 35, 90, 0.32);
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 body, html {
   min-height: 100%;
   font-weight: 300;
@@ -578,8 +580,6 @@ blockquote {
 }
 a.profile-link {
   display: flex;
-  #align-items: center;
-  #justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
