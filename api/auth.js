@@ -108,11 +108,10 @@ if (typeof document !== 'undefined') {
       }
     };
 }
-// Wenn das Skript nicht im Browser läuft, exportieren wir die Handler-Funktion für Vercel
-else {
-    // Vercel expects a default-exported function for API routes
-    function handler(req, res) {
-        res.status(501).json({ message: 'Not implemented.' });
-    }
-    module.exports = handler;
+
+// Handler-Funktion für Vercel API Route
+function handler(req, res) {
+    res.status(501).json({ message: 'Not implemented.' });
 }
+
+export default handler;
