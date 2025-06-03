@@ -113,5 +113,3 @@ if (typeof document !== 'undefined') {
 function handler(req, res) {
     res.status(501).json({ message: 'Not implemented.' });
 }
-
-export default handler;
