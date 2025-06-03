@@ -108,6 +108,9 @@ if (typeof document !== 'undefined') {
       }
     };
 }
-
-// Dummy-Export für Node.js-Kompatibilität
-export {};
+// Wenn das Skript nicht im Browser läuft, exportieren wir die Funktionen
+else {
+    module.exports = {
+        showStatus
+    };
+}
