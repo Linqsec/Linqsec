@@ -108,12 +108,11 @@ if (typeof document !== 'undefined') {
       }
     };
 }
-// Wenn das Skript nicht im Browser läuft, exportieren wir die Funktionen
+// Wenn das Skript nicht im Browser läuft, exportieren wir die Handler-Funktion für Vercel
 else {
-    module.exports = {
-        showStatus,
-        handler: (req, res) => {
-            res.status(501).json({ message: 'Not implemented.' });
-        }
-    };
+    // Vercel expects a default-exported function for API routes
+    function handler(req, res) {
+        res.status(501).json({ message: 'Not implemented.' });
+    }
+    module.exports = handler;
 }
