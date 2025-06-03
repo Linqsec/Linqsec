@@ -111,6 +111,9 @@ if (typeof document !== 'undefined') {
 // Wenn das Skript nicht im Browser läuft, exportieren wir die Funktionen
 else {
     module.exports = {
-        showStatus
+        showStatus,
+        handler: (req, res) => {
+            res.status(501).json({ message: 'Not implemented.' });
+        }
     };
 }
