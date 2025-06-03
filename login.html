@@ -61,7 +61,7 @@
           <p class="auth-link">Noch kein Konto? <a href="#" id="showRegister">Registrieren</a></p>
           <p class="auth-link"><a href="#" id="showReset">Passwort vergessen?</a></p>
         </form>
-        <form id="registerForm" class="auth-form hidden">
+        <form id="registerForm" class="auth-form hidden" tabindex="-1">
           <input type="text" id="name-register" name="name" placeholder="Name" required>
           <input type="email" id="email-register" name="email" placeholder="E-Mail" required>
           <input type="password" id="password-register" name="password" placeholder="Passwort" required>
@@ -75,7 +75,7 @@
           <button type="submit" class="cta-btn">Registrieren</button>
           <p class="auth-link">Schon ein Konto? <a href="#" id="showLogin">Login</a></p>
         </form>
-        <form id="resetForm" class="auth-form hidden">
+        <form id="resetForm" class="auth-form hidden" tabindex="-1">
           <input type="email" id="email-reset" name="email" placeholder="E-Mail" required>
           <button type="submit" class="cta-btn">Passwort zurücksetzen</button>
           <p class="auth-link"><a href="#" id="showLogin2">Zurück zum Login</a></p>
@@ -101,7 +101,8 @@
     <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr erfahren</a></span>
     <button id="cookieAccept">Verstanden</button>
   </div>
-  <script src="api/auth.js"></script>
-<script src="main.js"></script>
+  <!-- Use this if you want to load from the remote server -->
+  <script src="https://linqsec.vercel.app/api/auth.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
