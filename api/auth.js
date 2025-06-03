@@ -108,3 +108,6 @@ if (typeof document !== 'undefined') {
       }
     };
 }
+
+// Dummy-Export für Node.js-Kompatibilität
+export {};
