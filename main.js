@@ -255,13 +255,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-  // /api/auth/login.js
-  import { createClient } from '@supabase/supabase-js';
-
-  const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-  );
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
 
   // Session holen
   supabase.auth.getSession().then(({ data: { session } }) => {
@@ -277,4 +274,5 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("logoutBtn").addEventListener("click", async () => {
     await supabase.auth.signOut();
     window.location.href = "/login.html";
-  });
+  }
+);
