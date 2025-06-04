@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account – LinqSec</title>
+  <meta name="description" content="Verwalte dein LinqSec Konto">
+  <meta property="og:title" content="LinqSec Account">
+  <meta property="og:image" content="logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://socialbusiness.github.io/Linqsec/index.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Im <head> deiner HTML-Datei -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="all">
+</head>
+<body>
+  <header class="header" id="header">
+    <button type="button" class="burger" id="burger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>    
+    <a href="" class="logo"><img src="logo.svg" alt="LinqSec Logo" height="60"></a>
+    <nav class="navbar" id="navbar">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#preise">Preise</a></li>
+        <li><a href="index.html#about">Über uns</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="linqsec-ai.html">LINQSEC AI</a></li>
+        <li><a href="demo.html">Demo starten</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="admin.html">LinqSec Admin Dashboard</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="mode-toggle" id="modeToggle" aria-label="Dark/Light Mode umschalten">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <!-- Halbmond -->
+        <path
+          d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"
+          fill="#3533cd"
+          stroke="#3533cd"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+        <a href="login.html" class="profile-link" aria-label="Login/Profil">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="8" r="4" stroke="#3533cd" stroke-width="2" fill="none"/>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#3533cd" stroke-width="2" fill="none"/>
+      </svg>
+    </a>
+  </header>
+  <main>
+<!-- account.html -->
+    <section class="account-section">
+      <div class="account-container">
+        <div class="account-header">
+          <h1>Mein Konto</h1>
+          <button id="logoutBtn" class="cta-btn">Abmelden</button>
+        </div>
+        <p id="userInfo">Lade Kontoinformationen...</p>
+        <form id="updateForm" class="account-form">
+          <h2>Kontodaten aktualisieren</h2>
+          <input type="email" id="email-update" name="email" placeholder="Neue E-Mail" required>
+          <input type="password" id="password-update" name="password" placeholder="Neues Passwort" required>
+          <button type="submit" class="cta-btn">Aktualisieren</button>
+            <p class="auth-link"><a href="#" id="showDeleteAccount">Konto löschen</a></p>
+        </form>
+        <form id="deleteAccountForm" class="account-form hidden">
+          <h2>Konto löschen</h2>
+          <p>Geben Sie Ihr Passwort ein, um Ihr Konto zu löschen:</p>
+          <input type="password" id="password-delete" name="password" placeholder="Passwort" required>
+          <button type="submit" class="cta-btn">Konto löschen</button>
+        </form>
+      </div>
+    </section>
+    </main>
+      <footer class="footer" id="footer">
+  <div class="footer-links">
+    <a href="#">Impressum</a>|
+    <a href="#">Datenschutz</a>|
+    <a href="#">Kontakt</a>|
+    <a href="#">AGB</a>
+  </div>
+  <div class="footer-social">
+    <a href="mailto:Linqsec@mailbox.org" aria-label="E-Mail"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M2 4h20v16H2z" fill="none" stroke="#fff" stroke-width="2"/><path d="M22 4L12 13 2 4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 10v8M6 6v.01M10 14v-4a2 2 0 1 1 4 0v4m0 0v4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+  </div>
+  <div class="footer-note">© 2025 LinqSec – Alle Rechte vorbehalten</div>
+</footer>
+<div class="cookie-banner" id="cookieBanner">
+  <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr
+      erfahren</a></span>
+  <button id="cookieAccept">Verstanden</button>
+</div>
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</body>
+</html>
