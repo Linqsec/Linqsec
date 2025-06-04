@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Session holen
 supabaseClient.auth.getSession().then(({ data: { session } }) => {
   if (!session) {
-    window.location.href = "/account.html";
+    window.location.href = "/login.html"
   } else {
     const user = session.user;
     document.getElementById("userInfo").innerText =
