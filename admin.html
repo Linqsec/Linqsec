@@ -262,20 +262,6 @@
     </section>
   </div>
   <script>
-    // ====== Dark/Light Mode ======
-    const modeToggle = document.getElementById('modeToggle');
-    const html = document.documentElement;
-    modeToggle.addEventListener('click', () => {
-      const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    });
-    // Theme beim Laden setzen
-    (() => {
-      const saved = localStorage.getItem('theme');
-      if (saved) html.setAttribute('data-theme', saved);
-    })();
-
     // ====== Login ======
     const ADMIN_PASSWORD = '171201 ';
     const loginForm = document.getElementById('loginForm');
@@ -368,5 +354,10 @@
 </div>
 <div class="footer-note">© 2025 LinqSec – Alle Rechte vorbehalten</div>
 </footer>
+<div class="cookie-banner" id="cookieBanner">
+  <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr erfahren</a></span>
+  <button id="cookieAccept">Verstanden</button>
+</div>
+<script src="main.js"></script>
 </body>
 </html>
