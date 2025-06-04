@@ -254,19 +254,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
-  // Session holen
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (!session) {
-      window.location.href = "/login.html";
-    } else {
-      const user = session.user;
-      document.getElementById("userInfo").innerText =
-        `Eingeloggt als: ${user.email}`;
-    }
-  });
-
-  document.getElementById("logoutBtn").addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    window.location.href = "/login.html";
-  });
