@@ -255,9 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Supabase initialisieren (stellen Sie sicher, dass @supabase/supabase-js geladen ist, z.B. über ein <script> Tag im HTML)
-const supabaseClient = supabase.createClient('https://lmfmxembawehaliqnucg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtZm14ZW1iYXdlaGFsaXFudWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4MDg2MTcsImV4cCI6MjA2NDM4NDYxN30.DPx3ieSuce1ZG623hABbNLrS66krXiPF9S5W2XEuqfE');
-
 // Session holen
 supabaseClient.auth.getSession().then(({ data: { session } }) => {
   if (!session) {
