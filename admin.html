@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinqSec Admin Dashboard</title>
+  <meta property="og:title" content="LinqSec Admin Dashboard">
+  <meta name="description" content="LinqSec Admin Dashboard für Kontaktanfragen.">
+  <meta property="og:image" content="logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://socialbusiness.github.io/Linqsec/linqsec-admin-dashboard.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="all">
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #000;
+      --accent: #3533cd;
+      --accent-gradient: linear-gradient(90deg, #320366 0%, #3533cd 100%);
+      --shadow: 0 2px 16px 0 rgb(42 18 69 / 32%);
+    }
+    [data-theme='light'] body, [data-theme='light'] html {
+      background: #fff;
+      color: #000;
+      --bg: #fff;
+      --text: #000;
+    }
+    [data-theme='dark'] body, [data-theme='dark'] html {
+      background: #000;
+      color: #fff;
+      --bg: #000;
+      --text: #fff;
+      --shadow: 0 2px 16px 0 rgba(223, 218, 231, 0.3);
+    }
+    body, html {
+      min-height: 100%;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 300;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    .dashboard-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem 1rem;
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      border-radius: 1.2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      /* text-fill-color entfernt, da nicht standardisiert */
+      font-weight: 700;
+    }
+    .login-section, .admin-section {
+      display: none;
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .login-section.active, .admin-section.active {
+      display: block;
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .login-form input[type="password"] {
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1.1rem;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .login-form button {
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: none;
+      background: var(--accent-gradient);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .login-form button:hover {
+      filter: brightness(1.1);
+    }
+    .error-message {
+      color: #cd3533;
+      text-align: center;
+      margin-top: -0.7rem;
+      font-size: 1rem;
+      display: none;
+    }
+    .error-message.active {
+      display: block;
+    }
+    .admin-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      height: 70px;
+    }
+  .search-input {
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 340px;
+      background: var(--bg);
+      color: var(--text);
+    }
+  .table-responsive {
+      overflow-x: auto;
+      margin-top: 1.2rem;
+    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  thead {
+    background: var(--accent-gradient);
+    color: #fff;
+    font-weight: 700;
+    }
+  th, td {
+    padding: 0.9rem 0.7rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+@media (max-width: 700px) {
+  .dashboard-container {
+  padding: 0.5rem 0.1rem;
+  }
+  .admin-header {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  th, td {
+    padding: 0.7rem 0.3rem;
+    font-size: 0.95rem;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+}
+.mode-toggle {
+  position: absolute;
+  top: 1.3rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.mode-toggle svg {
+  fill: var(--accent);
+}
+.header {
+	height: 70px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: var(--bg);
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  display: flex;
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+  <header class="header" id="header">
+    <a href="" class="logo"><img src="logo.svg" alt="LinqSec Logo" height="60"></a>
+    <button type="button" class="mode-toggle" id="modeToggle" aria-label="Dark/Light Mode umschalten">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <!-- Halbmond -->
+        <path
+          d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"
+          fill="#3533cd"
+          stroke="#3533cd"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <a href="login.html" class="profile-link" aria-label="Login/Profil">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="8" r="4" stroke="#3533cd" stroke-width="2" fill="none"/>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#3533cd" stroke-width="2" fill="none"/>
+      </svg>
+    </a>
+  </header>
+  <div class="dashboard-container">
+    <h1>LinqSec Admin Dashboard</h1>
+    <section class="login-section active" id="loginSection">
+      <form class="login-form" id="loginForm" autocomplete="off">
+        <input type="password" id="passwordInput" placeholder="Admin-Passwort" required autofocus>
+        <button type="submit">Login</button>
+        <div class="error-message" id="loginError"></div>
+      </form>
+    </section>
+    <section class="admin-section" id="adminSection">
+      <div class="admin-header">
+        <input type="text" class="search-input" id="searchInput" placeholder="Suche nach Name, E-Mail oder Unternehmen...">
+      </div>
+      <div class="table-responsive">
+        <table id="contactsTable">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Name</th>
+              <th>E-Mail</th>
+              <th>Unternehmen</th>
+              <th>Nachricht</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Daten werden hier eingefügt -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <script>
+    // ====== Dark/Light Mode ======
+    const modeToggle = document.getElementById('modeToggle');
+    const html = document.documentElement;
+    modeToggle.addEventListener('click', () => {
+      const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    });
+    // Theme beim Laden setzen
+    (() => {
+      const saved = localStorage.getItem('theme');
+      if (saved) html.setAttribute('data-theme', saved);
+    })();
+
+    // ====== Login ======
+    const ADMIN_PASSWORD = '171201 ';
+    const loginForm = document.getElementById('loginForm');
+    const loginSection = document.getElementById('loginSection');
+    const adminSection = document.getElementById('adminSection');
+    const loginError = document.getElementById('loginError');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pw = document.getElementById('passwordInput').value;
+      if (pw === ADMIN_PASSWORD) {
+        loginSection.classList.remove('active');
+        adminSection.classList.add('active');
+        loginError.classList.remove('active');
+        loadContacts();
+      } else {
+        loginError.textContent = 'Falsches Passwort!';
+        loginError.classList.add('active');
+      }
+    });
+
+    // ====== Supabase Daten holen und Tabelle füllen ======
+    // HIER ERSETZEN: Deine Supabase-URL und API-Key
+    const SUPABASE_URL = 'https://lmfmxembaachachartiqnucg.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtZm14ZW1iYXdlaGFsaXFudWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4MDg2MTcsImV4cCI6MjA2NDM4NDYxN30.DPx3ieSuce1ZG623hABbNLrS66krXiPF9S5W2XEuqfE';
+
+    async function loadContacts() {
+      const tableBody = document.querySelector('#contactsTable tbody');
+      tableBody.innerHTML = '<tr><td colspan="5">Lade Daten...</td></tr>';
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/kontaktanfragen?select=*`, {
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        if (!res.ok) throw new Error('Fehler beim Laden der Daten');
+        let data = await res.json();
+        // Sortieren nach Datum (neueste oben)
+        data = data.sort((a, b) => new Date(b.datum) - new Date(a.datum));
+        renderTable(data);
+        window._contactsData = data; // für Suche
+      } catch (err) {
+        tableBody.innerHTML = `<tr><td colspan="5">${err.message}</td></tr>`;
+      }
+    }
+
+ // ====== Tabelle rendern ======
+    function renderTable(data) {
+      const tableBody = document.querySelector('#contactsTable tbody');
+      if (!data.length) {
+        tableBody.innerHTML = '<tr><td colspan="5">Keine Einträge gefunden.</td></tr>';
+        return;
+    }
+      tableBody.innerHTML = data.map(row => `
+        <tr>
+          <td>${row.datum ? new Date(row.datum).toLocaleString('de-DE') : ''}</td>
+          <td>${row.name || ''}</td>
+          <td>${row.email || ''}</td>
+          <td>${row.unternehmen || ''}</td>
+          <td>${row.nachricht || ''}</td>
+        </tr>`).join('');
+    }
+    // ====== Live-Suche ======
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const val = this.value.trim().toLowerCase();
+      const data = window._contactsData || [];
+      if (!val) {
+        renderTable(data);
+        return;
+      }
+      const filtered = data.filter(row =>
+        (row.name && row.name.toLowerCase().includes(val)) ||
+        (row.email && row.email.toLowerCase().includes(val)) ||
+        (row.unternehmen && row.unternehmen.toLowerCase().includes(val))
+      );
+      renderTable(filtered);
+    });
+  </script>
+<footer class="footer" id="footer">
+  <div class="footer-links">
+  <a href="#">Impressum</a>|
+  <a href="#">Datenschutz</a>|
+  <a href="#">Kontakt</a>|
+  <a href="#">AGB</a>
+</div>
+<div class="footer-social">
+  <a href="mailto:Linqsec@mailbox.org" aria-label="E-Mail"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M2 4h20v16H2z" fill="none" stroke="#fff" stroke-width="2"/><path d="M22 4L12 13 2 4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+  <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M6 10v8M6 6v.01M10 14v-4a2 2 0 1 1 4 0v4m0 0v4" fill="none" stroke="#fff" stroke-width="2"/></svg></a>
+</div>
+<div class="footer-note">© 2025 LinqSec – Alle Rechte vorbehalten</div>
+</footer>
+<div class="cookie-banner" id="cookieBanner">
+  <span>Diese Website verwendet Cookies, um die bestmögliche Funktionalität zu bieten. <a href="#">Mehr erfahren</a></span>
+  <button id="cookieAccept">Verstanden</button>
+</div>
+</body>
+</html>
