@@ -255,18 +255,26 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Session holen
-supabaseClient.auth.getSession().then(({ data: { session } }) => {
-  if (!session) {
-    window.location.href = "/login.html"
-  } else {
-    const user = session.user;
-    document.getElementById("userInfo").innerText =
-      `Eingeloggt als: ${user.email}`;
-  }
-});
+// Session holen NUR auf geschützten Seiten
+const protectedPages = ["/account.html", "/admin.html"]; // ggf. weitere Seiten ergänzen
+if (protectedPages.includes(window.location.pathname)) {
+  supabaseClient.auth.getSession().then(({ data: { session } }) => {
+    if (!session) {
+      window.location.href = "/login.html";
+    } else {
+      const user = session.user;
+      const userInfo = document.getElementById("userInfo");
+      if (userInfo) {
+        userInfo.innerText = `Eingeloggt als: ${user.email}`;
+      }
+    }
+  });
 
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  await supabaseClient.auth.signOut();
-  window.location.href = "/login.html";
-});
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      await supabaseClient.auth.signOut();
+      window.location.href = "/login.html";
+    });
+  }
+}
