@@ -254,3 +254,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
+
+// Session holen
+supabaseClient.auth.getSession().then(({ data: { session } }) => {
+  if (!session) {
+    window.location.href = "/login.html"
+  } else {
+    const user = session.user;
+    document.getElementById("userInfo").innerText =
+      `Eingeloggt als: ${user.email}`;
+  }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await supabaseClient.auth.signOut();
+  window.location.href = "/login.html";
+});
